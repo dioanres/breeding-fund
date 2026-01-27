@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\Admin\PostController;
+use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
 
 Route::get('/', function () {
@@ -20,9 +21,9 @@ Route::get('/kategori/{slug}', [NewsController::class, 'category'])->name('news.
 
 
 // Rute Login
-Route::get('/login', [AuthController::class, 'showLogin'])->name('login')->middleware('guest');
-Route::post('/login', [AuthController::class, 'processLogin']);
-Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+Route::get('/x/admin', [AuthController::class, 'showLogin'])->name('login')->middleware('guest');
+Route::post('/x/login', [AuthController::class, 'processLogin'])->name('processLogin')->middleware('guest');
+Route::post('/x/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Rute CMS Admin (Hanya untuk yang sudah login)
 Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
@@ -30,6 +31,7 @@ Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
     // Nanti rute CRUD Berita akan kita taruh di sini
     Route::resource('/posts', PostController::class);
     Route::patch('/posts/{post}/toggle-publish', [PostController::class, 'togglePublish'])->name('posts.toggle-publish');
+    Route::resource('/categories', CategoryController::class);
 });
 
 Route::get('/link-storage', function () {

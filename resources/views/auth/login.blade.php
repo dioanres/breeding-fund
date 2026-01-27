@@ -7,7 +7,7 @@
     <div class="col-md-4">
         <div class="card shadow-sm border-0 p-4">
             <h3 class="text-center fw-bold mb-4">Login CMS</h3>
-            <form action="{{ route('login') }}" method="POST">
+            <form action="{{ route('processLogin') }}" method="POST">
                 @csrf
                 <div class="mb-3">
                     <label class="form-label">Email</label>

@@ -17,10 +17,14 @@ class NewsController extends Controller
                     ->latest()
                     ->first();
 
-        $posts = Post::where('is_published', true)
-            ->with('category')
-            ->latest()
-            ->take(6)->get();
+        $posts = Post::with('category')
+                 ->where('is_published', true)
+                 // Kecualikan berita yang sedang jadi headline agar tidak dobel
+                 ->when($headline, function($query) use ($headline) {
+                     return $query->where('id', '!=', $headline->id);
+                 })
+                 ->latest()
+                 ->paginate(6);
 
         return view('home', compact('posts', 'headline')); 
     }

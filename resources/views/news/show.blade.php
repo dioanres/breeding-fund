@@ -41,13 +41,13 @@
         
         <div class="mb-4">
             <span class="badge bg-primary px-3 py-2 text-uppercase tracking-wider mb-3">
-                Teknologi
+                {{ $post->category->name }}
             </span>
             <h1 class="display-4 fw-bolder lh-sm mb-3" style="font-family: 'Georgia', serif;">
                 {{ $post->title }}
             </h1>
             <div class="d-flex align-items-center text-muted border-bottom pb-4">
-                <img src="https://ui-avatars.com/api/?name=Admin" class="rounded-circle me-2" width="40" alt="Author">
+                <!-- <img src="https://ui-avatars.com/api/?name=Admin" class="rounded-circle me-2" width="40" alt="Author"> -->
                 <div>
                     <span class="fw-bold text-dark d-block">Oleh Admin</span>
                     <small>{{ $post->created_at->translatedFormat('d F Y') }} &bull; {{ $post->views }}x dibaca</small>
@@ -56,8 +56,7 @@
         </div>
 
         <div class="mb-5">
-            <img src="{{ $post->thumbnail ?? 'https://picsum.photos/1000/600' }}" class="img-fluid rounded-4 w-100 shadow-sm" alt="{{ $post->title }}">
-            <figcaption class="figure-caption text-center mt-2">Ilustrasi berita. Sumber: Unsplash</figcaption>
+
         </div>
 
         <div class="fs-5 lh-lg font-serif text-dark" style="font-family: 'Georgia', serif;">

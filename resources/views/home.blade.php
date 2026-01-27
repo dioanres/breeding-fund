@@ -4,23 +4,44 @@
 
 @section('content')
 
-    <div class="row g-4">
-    <h3 class="fw-bold border-bottom pb-2 mb-4">Berita Terbaru</h3>
+    <div class="row g-4 mb-4">
+        <div class="col-12">
+            <h3 class="fw-bold border-start border-4 border-warning ps-3 mb-4">Berita Terbaru</h3>
+        </div>
 
-    @foreach($posts as $post)
-    <div class="col-md-4">
-        <div class="card h-100 news-card">
-            <div class="card-body">
-                <span class="badge bg-secondary mb-2 category-badge">{{ $post->category->name }}</span>
-                <h5 class="card-title fw-bold" style="line-height: 1.4;">{{ $post['title'] }}</h5>
-                <p class="card-text text-muted">{{ Str::limit(strip_tags($post['content']), 100) }}</p>
-            </div>
-            <div class="card-footer bg-white border-0 text-muted d-flex justify-content-between">
-                <small>{{ $post['created_at']->diffForHumans() }}</small>
-                <a href="{{ route('news.show', $post->slug) }}" class="text-decoration-none fw-bold text-dark">Baca &rarr;</a>
+        @forelse($posts as $post)
+        <div class="col-md-4">
+            <div class="card h-100 news-card border-0 shadow-sm rounded-4 overflow-hidden">
+                <div class="position-relative">
+                    <span class="badge bg-warning text-dark position-absolute top-0 end-0 m-3 shadow-sm px-3 py-2 rounded-pill fw-bold" style="font-size: 0.75rem;">
+                        {{ $post->category->name }}
+                    </span>
+                </div>
+                
+                <div class="card-body p-4">
+                    <h5 class="card-title fw-bold mb-3">
+                        <a href="{{ route('news.show', $post->slug) }}" class="text-dark text-decoration-none stretched-link">
+                            {{ Str::limit($post->title, 55) }}
+                        </a>
+                    </h5>
+                    <p class="card-text text-muted small mb-0">
+                        {{ Str::limit(strip_tags($post->content), 100) }}
+                    </p>
+                </div>
+                <div class="card-footer bg-white border-0 px-4 pb-4 pt-0 d-flex justify-content-between align-items-center">
+                    <small class="text-muted"><i class="bi bi-clock me-1"></i> {{ $post->created_at->diffForHumans() }}</small>
+                    <small class="text-muted"><i class="bi bi-eye me-1"></i> {{ number_format($post->views) }}</small>
+                </div>
             </div>
         </div>
+        @empty
+        <div class="col-12 text-center py-5">
+            <p class="text-muted">Belum ada berita reguler.</p>
+        </div>
+        @endforelse
     </div>
-    @endforeach
-</div>
+
+    <div class="d-flex justify-content-center mt-5">
+        {{ $posts->links() }}
+    </div>
 @endsection

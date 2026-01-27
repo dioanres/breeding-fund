@@ -25,6 +25,11 @@
                     <a href="{{ route('admin.dashboard') }}" class="nav-link active"><i class="bi bi-grid me-2"></i> Dashboard</a>
                 </li>
                 <li class="nav-item mb-2">
+                    <a href="{{ route('admin.categories.index') }}" class="nav-link text-white">
+                        <i class="bi bi-tags-fill me-2"></i> Kategori
+                    </a>
+                </li>
+                <li class="nav-item mb-2">
                    <a href="{{ route('admin.posts.index') }}" class="nav-link"><i class="bi bi-newspaper me-2"></i> Kelola Berita</a>
                 </li>
                 <li class="nav-item mt-auto">
