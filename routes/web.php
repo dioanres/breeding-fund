@@ -19,14 +19,18 @@ Route::get('/berita/{slug}', [NewsController::class, 'show'])->name('news.show')
 // Taruh di bagian rute publik (sebelum grup admin)
 Route::get('/kategori/{slug}', [NewsController::class, 'category'])->name('news.category');
 
+Route::group([
+    'prefix' => 'xyz',
+], function () {
+    // Rute Login
+    Route::get('admin', [AuthController::class, 'showLogin'])->name('login')->middleware('guest');
+    Route::post('login', [AuthController::class, 'processLogin'])->name('processLogin')->middleware('guest');
+    Route::post('logout', [AuthController::class, 'logout'])->name('logout');
+});
 
-// Rute Login
-Route::get('/x/admin', [AuthController::class, 'showLogin'])->name('login')->middleware('guest');
-Route::post('/x/login', [AuthController::class, 'processLogin'])->name('processLogin')->middleware('guest');
-Route::post('/x/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Rute CMS Admin (Hanya untuk yang sudah login)
-Route::middleware('auth')->prefix('admin')->name('admin.')->group(function () {
+Route::middleware('auth')->prefix('xyz/admin')->name('admin.')->group(function () {
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     // Nanti rute CRUD Berita akan kita taruh di sini
     Route::resource('/posts', PostController::class);
