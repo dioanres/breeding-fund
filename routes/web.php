@@ -18,6 +18,9 @@ Route::get('/', [NewsController::class, 'index'])->name('home');
 Route::get('/berita/{slug}', [NewsController::class, 'show'])->name('news.show');
 // Taruh di bagian rute publik (sebelum grup admin)
 Route::get('/kategori/{slug}', [NewsController::class, 'category'])->name('news.category');
+Route::get('ticker', function() {
+    return view('ticker');
+})->name('ticker');
 
 Route::group([
     'prefix' => 'xyz',
