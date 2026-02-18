@@ -39,8 +39,8 @@
 
 <section>
     <!-- TradingView Widget BEGIN -->
-    <div class="tradingview-widget-container" style="height:100%;width:100%">
-        <div class="tradingview-widget-container__widget" style="height:calc(100% - 32px);width:100%"></div>
+    <div class="tradingview-widget-container">
+        <div class="tradingview-widget-container__widget"></div>
         <div class="tradingview-widget-copyright"><a href="https://www.tradingview.com/symbols/NASDAQ-AAPL/" rel="noopener nofollow" target="_blank"><span class="blue-text">AAPL stock chart</span></a><span class="trademark"> by TradingView</span></div>
         <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-advanced-chart.js" async>
             {
@@ -65,7 +65,8 @@
                 "withdateranges": false,
                 "compareSymbols": [],
                 "studies": [],
-                "autosize": true
+                "width": 1000,
+                "height": 630
             }
         </script>
     </div>
