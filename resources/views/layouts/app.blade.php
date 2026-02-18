@@ -57,6 +57,11 @@
             text-transform: uppercase;
             letter-spacing: 1px;
         }
+
+        .market-page {
+            /* ruang aman ke footer */
+            background: var(--bg-main);
+        }
     </style>
 </head>
 
