@@ -25,7 +25,7 @@ Route::get('ticker', function() {
 })->name('ticker');
 
 Route::get('/infografis', [InfografisController::class, 'index'])->name('infografis');
-Route::get('/infografis/{infografis}', [InfografisController::class, 'show'])->name('infografis.show');
+Route::get('/infografis/{uuid}', [InfografisController::class, 'show'])->name('infografis.show');
 
 Route::group([
     'prefix' => 'xyz',

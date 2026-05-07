@@ -21,7 +21,7 @@
         @foreach($infografis as $item)
         <div class="col-md-6 col-lg-4">
             <div class="card border-0 shadow-sm h-100">
-                <a href="{{ route('infografis.show', $item->id) }}">
+                <a href="{{ route('infografis.show', $item->uuid) }}">
                     @if($item->type === 'image')
                         <img src="{{ asset(ltrim($item->file, '/')) }}" alt="{{ $item->name }}" class="card-img-top" style="object-fit: cover; height: 220px; cursor: pointer;">
                     @else
@@ -31,7 +31,7 @@
                     @endif
                 </a>
                 <div class="card-body d-flex flex-column">
-                    <a href="{{ route('infografis.show', $item->id) }}" class="text-decoration-none text-dark">
+                    <a href="{{ route('infografis.show', $item->uuid) }}" class="text-decoration-none text-dark">
                         <h6 class="card-title fw-bold">{{ $item->name }}</h6>
                     </a>
                     <small class="text-muted"><i class="bi bi-calendar3 me-1"></i>Dibuat pada: {{ ($item->published_at ?? $item->created_at)->format('d M Y') }}</small>
