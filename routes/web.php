@@ -6,6 +6,8 @@ use App\Http\Controllers\NewsController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\InfografisController as AdminInfografisController;
+use App\Http\Controllers\InfografisController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -21,6 +23,8 @@ Route::get('/kategori/{slug}', [NewsController::class, 'category'])->name('news.
 Route::get('ticker', function() {
     return view('ticker');
 })->name('ticker');
+
+Route::get('/infografis', [InfografisController::class, 'index'])->name('infografis');
 
 Route::group([
     'prefix' => 'xyz',
@@ -39,6 +43,7 @@ Route::middleware('auth')->prefix('xyz/admin')->name('admin.')->group(function (
     Route::resource('/posts', PostController::class);
     Route::patch('/posts/{post}/toggle-publish', [PostController::class, 'togglePublish'])->name('posts.toggle-publish');
     Route::resource('/categories', CategoryController::class);
+    Route::resource('/infografis', AdminInfografisController::class);
 });
 
 Route::get('/link-storage', function () {

@@ -80,6 +80,7 @@
                 <ul class="navbar-nav ms-auto font-sans-serif fw-semibold">
                     <li class="nav-item"><a class="nav-link active" href="/">News</a></li>
                     <li class="nav-item"><a class="nav-link active" href="{{ route('ticker') }}">Ticker</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="{{ route('infografis') }}">Infografis</a></li>
                 </ul>
             </div>
         </div>

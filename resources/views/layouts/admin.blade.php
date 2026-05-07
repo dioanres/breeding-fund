@@ -32,6 +32,9 @@
                 <li class="nav-item mb-2">
                    <a href="{{ route('admin.posts.index') }}" class="nav-link"><i class="bi bi-newspaper me-2"></i> Kelola Berita</a>
                 </li>
+                <li class="nav-item mb-2">
+                    <a href="{{ route('admin.infografis.index') }}" class="nav-link"><i class="bi bi-images me-2"></i> Infografis</a>
+                </li>
                 <li class="nav-item mt-auto">
                     <form action="{{ route('logout') }}" method="POST">
                         @csrf
