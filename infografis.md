@@ -7,3 +7,4 @@
 - add new column published_at and can editable by user
 - in portal view "dibuat pada" change from this data
 - set this data optional if empty then get from created_at, else get from published_at
+- generate 1 route to get detail image by id in page portal

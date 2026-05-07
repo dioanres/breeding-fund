@@ -21,15 +21,19 @@
         @foreach($infografis as $item)
         <div class="col-md-6 col-lg-4">
             <div class="card border-0 shadow-sm h-100">
-                @if($item->type === 'image')
-                    <img src="{{ asset(ltrim($item->file, '/')) }}" alt="{{ $item->name }}" class="card-img-top" style="object-fit: cover; height: 220px;">
-                @else
-                    <div class="d-flex align-items-center justify-content-center bg-light" style="height: 220px;">
-                        <i class="bi bi-file-earmark-pdf text-danger" style="font-size: 5rem;"></i>
-                    </div>
-                @endif
+                <a href="{{ route('infografis.show', $item->id) }}">
+                    @if($item->type === 'image')
+                        <img src="{{ asset(ltrim($item->file, '/')) }}" alt="{{ $item->name }}" class="card-img-top" style="object-fit: cover; height: 220px; cursor: pointer;">
+                    @else
+                        <div class="d-flex align-items-center justify-content-center bg-light" style="height: 220px; cursor: pointer;">
+                            <i class="bi bi-file-earmark-pdf text-danger" style="font-size: 5rem;"></i>
+                        </div>
+                    @endif
+                </a>
                 <div class="card-body d-flex flex-column">
-                    <h6 class="card-title fw-bold">{{ $item->name }}</h6>
+                    <a href="{{ route('infografis.show', $item->id) }}" class="text-decoration-none text-dark">
+                        <h6 class="card-title fw-bold">{{ $item->name }}</h6>
+                    </a>
                     <small class="text-muted"><i class="bi bi-calendar3 me-1"></i>Dibuat pada: {{ ($item->published_at ?? $item->created_at)->format('d M Y') }}</small>
                     <div class="mt-auto d-flex gap-2">
                         @if($item->type === 'image')
