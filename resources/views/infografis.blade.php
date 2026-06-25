@@ -48,6 +48,11 @@
                         <a href="{{ asset(ltrim($item->file, '/')) }}" download class="btn btn-sm btn-dark">
                             <i class="bi bi-download"></i>
                         </a>
+                        @auth
+                            <a href="{{ route('admin.infografis.edit', $item->id) }}" class="btn btn-sm btn-outline-warning" title="Edit">
+                                <i class="bi bi-pencil-square"></i>
+                            </a>
+                        @endauth
                     </div>
                 </div>
             </div>

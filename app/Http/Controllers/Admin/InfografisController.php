@@ -46,13 +46,15 @@ class InfografisController extends Controller
         return redirect()->route('admin.infografis.index')->with('success', 'Infografis berhasil ditambahkan!');
     }
 
-    public function edit(Infografis $infografis)
+    public function edit(int $id)
     {
+        $infografis = Infografis::findOrFail($id);
         return view('admin.infografis.edit', compact('infografis'));
     }
 
-    public function update(Request $request, Infografis $infografis)
+    public function update(Request $request, int $id)
     {
+        $infografis = Infografis::findOrFail($id);
         $validated = $request->validate([
             'name' => 'required|max:255',
             'file' => 'nullable|file|mimes:jpg,jpeg,png,gif,pdf|max:5120',
@@ -83,13 +85,16 @@ class InfografisController extends Controller
         return redirect()->route('admin.infografis.index')->with('success', 'Infografis berhasil diperbarui!');
     }
 
-    public function destroy(Infografis $infografis)
+    public function destroy(int $id)
     {
+        $infografis = Infografis::findOrFail($id);
+
         if ($infografis->file && str_contains($infografis->file, '/storage/')) {
             Storage::disk('public')->delete(str_replace('/storage/', '', $infografis->file));
         }
 
         $infografis->delete();
+
         return redirect()->route('admin.infografis.index')->with('success', 'Infografis berhasil dihapus!');
     }
 }
