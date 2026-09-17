@@ -18,8 +18,9 @@
             <table class="table table-hover align-middle">
                 <thead class="table-light">
                     <tr>
-                        <th width="40%">Nama</th>
+                        <th width="35%">Nama</th>
                         <th>Tipe</th>
+                        <th>Views</th>
                         <th>Status</th>
                         <th>Tanggal</th>
                         <th>Aksi</th>
@@ -36,6 +37,7 @@
                                 <span class="badge bg-info"><i class="bi bi-image me-1"></i>Gambar</span>
                             @endif
                         </td>
+                        <td><i class="bi bi-eye text-muted me-1"></i>{{ number_format($item->views) }}</td>
                         <td>
                             <span class="badge {{ $item->is_active ? 'bg-success' : 'bg-secondary' }}">
                                 {{ $item->is_active ? 'Aktif' : 'Nonaktif' }}
@@ -58,7 +60,7 @@
                     </tr>
                     @empty
                     <tr>
-                        <td colspan="5" class="text-center text-muted py-4">Belum ada data infografis.</td>
+                        <td colspan="6" class="text-center text-muted py-4">Belum ada data infografis.</td>
                     </tr>
                     @endforelse
                 </tbody>

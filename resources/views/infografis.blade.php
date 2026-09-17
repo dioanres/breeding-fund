@@ -35,6 +35,7 @@
                         <h6 class="card-title fw-bold">{{ $item->name }}</h6>
                     </a>
                     <small class="text-muted"><i class="bi bi-calendar3 me-1"></i>Dibuat pada: {{ ($item->published_at ?? $item->created_at)->format('d M Y') }}</small>
+                    <small class="text-muted mt-1"><i class="bi bi-eye me-1"></i>{{ number_format($item->views) }}x dilihat</small>
                     <div class="mt-auto d-flex gap-2">
                         @if($item->type === 'image')
                             <a href="{{ asset(ltrim($item->file, '/')) }}" target="_blank" class="btn btn-sm btn-outline-dark flex-grow-1">

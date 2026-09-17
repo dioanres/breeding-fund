@@ -16,6 +16,7 @@
                 <h4 class="fw-bold mb-1">{{ $infografis->name }}</h4>
                 <small class="text-muted">
                     <i class="bi bi-calendar3 me-1"></i>Dibuat pada: {{ ($infografis->published_at ?? $infografis->created_at)->format('d M Y') }}
+                    &bull; <i class="bi bi-eye ms-2 me-1"></i>{{ number_format($infografis->views) }}x dilihat
                 </small>
 
                 <hr>

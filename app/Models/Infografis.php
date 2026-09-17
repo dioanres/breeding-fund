@@ -2,8 +2,8 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Str;
 
 class Infografis extends Model
@@ -18,6 +18,7 @@ class Infografis extends Model
         'file',
         'type',
         'is_active',
+        'views',
         'published_at',
     ];
 
